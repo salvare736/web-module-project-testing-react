@@ -23,15 +23,11 @@ const testEpisodeWithoutImage = {
 }
 
 test("renders without error", () => {
-    const { rerender } = render(<Episode episode={{}} />);
-
-    rerender(<Episode episode={testEpisode} />);
+    render(<Episode episode={testEpisode} />);
 });
 
 test("renders the summury test passed as prop", ()=>{
-    const { rerender } = render(<Episode episode={{}} />); 
-
-    rerender(<Episode episode={testEpisode} />);
+    render(<Episode episode={testEpisode} />);
 
     const description = screen.getByText(/this episode is about a very sad boi./i);
 
@@ -41,9 +37,7 @@ test("renders the summury test passed as prop", ()=>{
 });
 
 test("renders default image when image is not defined", ()=>{
-    const { rerender } = render(<Episode episode={{}} />); 
-
-    rerender(<Episode episode={testEpisodeWithoutImage} />);
+    render(<Episode episode={testEpisodeWithoutImage} />);
 
     expect(screen.getByAltText('./stranger_things.png')).toBeInTheDocument();
 })
