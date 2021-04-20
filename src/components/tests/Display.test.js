@@ -49,11 +49,15 @@ test('when the fetch button is pressed, the amount of select options rendered is
 });
 
 test('notice the optional functional prop passed in to the Display component client code - test that when the fetch button is pressed, this function is called.', async () => {
-    // fetchShow.mockResolvedValueOnce(testData);
+    fetchShow.mockResolvedValueOnce(testData);
 
-    // render(<Display />);
+    const mockDisplayFunc = jest.fn();
 
-    // userEvent.click(screen.getByRole('button', { name: /press to get show data/i }));
+    render(<Display displayFunc={mockDisplayFunc} />);
+
+    userEvent.click(screen.getByRole('button', { name: /press to get show data/i }));
+
+    expect(await waitFor (() => mockDisplayFunc)).toHaveBeenCalled();
 });
 
 ///Tasks:
