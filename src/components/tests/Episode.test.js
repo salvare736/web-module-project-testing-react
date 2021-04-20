@@ -26,7 +26,7 @@ test("renders without error", () => {
     render(<Episode episode={testEpisode} />);
 });
 
-test("renders the summury test passed as prop", ()=>{
+test("renders the summury test passed as prop", () => {
     render(<Episode episode={testEpisode} />);
 
     const description = screen.getByText(/this episode is about a very sad boi./i);
@@ -36,7 +36,7 @@ test("renders the summury test passed as prop", ()=>{
     expect(screen.getByText('This episode is about a very sad boi.')).toBeInTheDocument();
 });
 
-test("renders default image when image is not defined", ()=>{
+test("renders default image when image is not defined", () => {
     render(<Episode episode={testEpisodeWithoutImage} />);
 
     expect(screen.getByAltText('./stranger_things.png')).toBeInTheDocument();

@@ -21,7 +21,7 @@ const testShow = {
     ]
 }
 
-test('renders testShow and no selected Season without errors', ()=>{
+test('renders testShow and no selected Season without errors', () => {
     render(<Show show={testShow} selectedSeason={'none'}/>); 
 });
 
@@ -31,7 +31,7 @@ test('renders Loading component when prop show is null', () => {
     expect(screen.getByTestId(/loading-container/i)).toBeInTheDocument();
 });
 
-test('renders same number of options seasons are passed in', ()=>{
+test('renders same number of options seasons are passed in', () => {
     render(<Show show={testShow} selectedSeason={'none'}/>);
 
     expect(screen.getAllByTestId(/season-option/i)).toHaveLength(2);
@@ -51,11 +51,11 @@ test('handleSelect is called when an season is selected', () => {
 });
 
 test('component renders when no seasons are selected and when rerenders with a season passed in', () => {
-    const { rerender, debug } = render(<Show show={testShow} selectedSeason={'none'} />);
-    debug();
+    const { rerender } = render(<Show show={testShow} selectedSeason={'none'} />);
+
+    expect(screen.queryByTestId(/episodes-container/i)).not.toBeInTheDocument();
 
     rerender(<Show show={testShow} selectedSeason={[0]} />);
-    debug();
 
     expect(screen.getByTestId(/episodes-container/i)).toBeInTheDocument();
 });
